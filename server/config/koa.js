@@ -1,7 +1,17 @@
 'use strict';
 const fs = require('fs');
 const mongoose = require('mongoose');
-let cors = require('koa-cors'), compress = require('koa-compress'), router = require('koa-router'), wbshared = require('wb-shared'), logger = wbshared.logger.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) }), parse = require('koa-better-body'), config = wbshared.config, koajwt = require('koa-jwt'), User = mongoose.model('User'), constants = wbshared.utils.constants;
+let cors = require('koa-cors'), 
+    compress = require('koa-compress'), 
+    router = require('koa-router'), 
+    wbshared = require('wb-shared'), 
+    logger = wbshared.logger.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) }), 
+    parse = require('koa-better-body'), 
+    config = wbshared.config, 
+    koajwt = require('koa-jwt'), 
+    User = mongoose.model('User'), 
+    constants = wbshared.utils.constants;
+    
 module.exports = function (app) {
     app.use(cors({
         maxAge: 3600,

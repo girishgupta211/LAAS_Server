@@ -63,7 +63,6 @@ HospitalSchema.static('defHospitalSchema', function () {
     return {
         Hospital_Name: null
         }
-    };
 });
 mongoose.model('Hospital', HospitalSchema);
         

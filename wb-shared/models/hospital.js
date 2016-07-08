@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 let Schema = mongoose.Schema, log = require('../utils/logger').root.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) }), bcrypt = require('..').utils.crypter, co = require('co'), constants = require('../utils/constants.js');
 var HospitalSchema = new Schema({
 
-        Sr_No: { type: String },
+        Sr_No: { type: Number },
         Location_Coordinates : { type: String },
         Location : { type: String },
         Hospital_Name : { type: String },
@@ -14,7 +14,7 @@ var HospitalSchema = new Schema({
         State : { type: String },
         District  : { type: String },
         Subdistrict  : { type: String },
-        Pincode : { type: String },
+        Pincode : { type: Number },
         Telephone : { type: String },
         Mobile_Number : { type: String },
         Emergency_Num : { type: String },
@@ -49,8 +49,8 @@ var HospitalSchema = new Schema({
         Empanelment_or_Collaboration_with : { type: String },
         Emergency_Services : { type: String },
         Tariff_Range : { type: String },
-        State_ID  : { type: String },
-        District_ID  : { type: String }
+        State_ID  : { type: Number },
+        District_ID  : { type: Number }
 }, {
     toJSON: {
         transform: function (docM, retJ, option) {

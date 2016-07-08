@@ -1,0 +1,9 @@
+node washbayServer.js | node_modules/bunyan/bin/bunyan
+cp -r wb-shared node_modules/
+
+curl -i 'http://localhost:9135/w1/verification/signup' -X POST -d '{"name":{"fname":"Amitesh","lname":"Rai"}, "password":"washbay@123","email":"amitesh.raiji@washbay.in","phone":"0000000001","utype":1}' -H 'Content-Type:application/json'
+
+curl -i 'http://localhost:9135/w1/verification/signin' -X POST -d '{"password":"washbay@123","username":"amitesh.raiji@washbay.in"}' -H 'Content-Type:application/json'
+mongoimport -d washbay-dev -c hospital --type csv --file ~/dataHack/hospital_database-may_2016.csv --headerline
+
+curl -i 'http://localhost:9135/w1/hospital' -X GET -H 'Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NzdlNzU4NThiNTM0YTA3MjZjYTU3NWMiLCJpYXQiOjE0Njc5MDU3NzJ9.KbsO1x17bAZ88-irh4KDasWcb3_1wuev4ydyoBRxljM' 

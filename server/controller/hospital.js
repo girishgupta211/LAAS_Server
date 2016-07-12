@@ -6,12 +6,14 @@ exports.initSecured = (app) => {
     app.get('/w1/hospital', getListHospital);
     app.get('/w1/hospital/:id', getHospital);
     app.get('/w1/hospitalquery', getQueryList);
-};
-exports.initAdmin = (app) => {
     app.post('/w1/hospital', addHospital);
     app.put('/w1/hospital', updateHospital);
     app.del('/w1/hospital/:id', deleteHospital);
-    app.put('/w1/discount');
+};
+exports.initAdmin = (app) => {
+/*    app.post('/w1/hospital', addHospital);
+    app.put('/w1/hospital', updateHospital);
+    app.del('/w1/hospital/:id', deleteHospital);*/
 };
 function* getQueryList(next) {
     try {
@@ -63,7 +65,7 @@ function* getListHospital(next) {
 }
 function* addHospital(next) {
     try {
-        wbuser = this.document.wbuser;
+//        wbuser = this.document.wbuser;
         let body = this.request.fields;
         log.info('Body recieved in add hospital : ', body);
         let hospitalStruct = yield new Hospital(body).save();

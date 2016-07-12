@@ -1,3 +1,5 @@
+mongoimport -d washbay-dev -c hospitals --type csv --file ~/dataHack/hospital_database-may_2016.csv --headerline
+
 node washbayServer.js | node_modules/bunyan/bin/bunyan
 cp -r wb-shared node_modules/
 
@@ -9,3 +11,5 @@ mongoimport -d washbay-dev -c hospital --type csv --file ~/dataHack/hospital_dat
 curl -i 'http://localhost:9135/w1/hospital' -X GET -H 'Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NzdlNzU4NThiNTM0YTA3MjZjYTU3NWMiLCJpYXQiOjE0Njc5MDU3NzJ9.KbsO1x17bAZ88-irh4KDasWcb3_1wuev4ydyoBRxljM'
 
 node-inspector washbayServer.js | node_modules/bunyan/bin/bunyan
+
+node-debug  washbayServer.js | node_modules/bunyan/bin/bunyan

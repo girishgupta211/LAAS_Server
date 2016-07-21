@@ -1,7 +1,11 @@
 'use strict';
 const mongoose = require('mongoose');
 //let ObjectId = mongoose.Schema.ObjectId;
-let Hospital = mongoose.model('Hospital'), wbshared = require('wb-shared'), log = wbshared.logger.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) }), constants = wbshared.utils.constants;
+let Hospital = mongoose.model('Hospital'), 
+    wbshared = require('wb-shared'), 
+    log = wbshared.logger.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) }), 
+    constants = wbshared.utils.constants;
+
 exports.initSecured = (app) => {
     //<all : 4/men : 0/women : 1/kidb : 2/kidg : 3>
 //    app.del('/w1/hospital/:id', deleteHospital);

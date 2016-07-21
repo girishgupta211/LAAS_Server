@@ -10,10 +10,15 @@ mongoimport -d washbay-dev -c hospital --type csv --file ~/dataHack/hospital_dat
 
 curl -i 'http://localhost:9135/w1/hospital' -X GET -H 'Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NzdlNzU4NThiNTM0YTA3MjZjYTU3NWMiLCJpYXQiOjE0Njc5MDU3NzJ9.KbsO1x17bAZ88-irh4KDasWcb3_1wuev4ydyoBRxljM'
 
+
+db.hospitals.find({_id:ObjectId("5790b876b4d3f7bf16416a23")}).pretty()
+
 node-inspector washbayServer.js | node_modules/bunyan/bin/bunyan
 
 node-debug  washbayServer.js | node_modules/bunyan/bin/bunyan
 curl -i 'http://localhost:9135/w1/hospital/577fb4a814ca6f4b6f239267' -X GET
  curl -i 'http://localhost:9135/w1/hospitalquery?lquery=Radha'
 curl -i 'http://localhost:9135/w1/hospital' -X
-curl -i 'http://localhost:9135/w1/hospital' -X PUT -d '{"_id":"577fb4a814ca6f4b6f239267"}'
+curl -i 'http://localhost:9135/w1/hospital/577fb4a814ca6f4b6f239273' -X PUT -d '{ "Emergency_Num":"9013001299"}' -H
+'Content-Type:application/json' 
+

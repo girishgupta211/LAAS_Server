@@ -4,14 +4,14 @@ const mongoose = require('mongoose');
 let Hospital = mongoose.model('Hospital'), wbshared = require('wb-shared'), log = wbshared.logger.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) }), constants = wbshared.utils.constants;
 exports.initSecured = (app) => {
     //<all : 4/men : 0/women : 1/kidb : 2/kidg : 3>
-    app.post('/w1/hospital', addHospital);
     app.del('/w1/hospital/:id', deleteHospital);
 };
 exports.initPub = (app) => {
     app.get('/w1/hospital', getListHospital);
     app.get('/w1/hospitalquery', getQueryList);
     app.get('/w1/hospital/:id', getHospital);
-    app.put('/w1/hospital', updateHospital);
+    app.post('/w1/hospital', addHospital);
+    app.put('/w1/hospital/:id', updateHospital);
 };
 function* getQueryList(next) {
     try {
@@ -79,8 +79,9 @@ function* addHospital(next) {
 function* updateHospital(next) {
     try {
         let body = this.request.fields;
-        let hospitalStruct = yield Hospital.findOneAndUpdate({ _id: body._id }, body, { new: true });
-        //let hospitalStruct = yield Hospital.findByIdAndUpdate(id,{"Emergency_Num":body.Emergency_Num}, { new: true });
+        let id = this.params.id;
+        //let hospitalStruct = yield Hospital.findOneAndUpdate({ _id: body._id }, body, { new: true });
+        let hospitalStruct = yield Hospital.findByIdAndUpdate(id,body, { new: true });
         log.info("Update Hospital : ", hospitalStruct);
         this.body = hospitalStruct;
         this.status = 200;

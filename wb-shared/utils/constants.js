@@ -1,8 +1,13 @@
 const MALE = 'M';
 const FEMALE = 'F';
+const OTHER = 'o';
+const INSTITUTION = 'i';
+
 exports.MALE = MALE;
 exports.FEMALE = FEMALE;
-exports.GENDERS = [MALE, FEMALE];
+exports.OTHER = OTHER;
+exports.INSTITUTION = INSTITUTION;
+exports.GENDERS = [MALE, FEMALE,OTHER, INSTITUTION];
 
 const EUSER = 0;        //end user - the main target client
 const SUSER = 1;        //service agent

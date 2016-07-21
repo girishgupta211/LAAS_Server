@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 let Hospital = mongoose.model('Hospital'), wbshared = require('wb-shared'), log = wbshared.logger.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) }), constants = wbshared.utils.constants;
 exports.initSecured = (app) => {
     //<all : 4/men : 0/women : 1/kidb : 2/kidg : 3>
-    app.del('/w1/hospital/:id', deleteHospital);
+//    app.del('/w1/hospital/:id', deleteHospital);
 };
 exports.initPub = (app) => {
     app.get('/w1/hospital', getListHospital);
@@ -12,6 +12,7 @@ exports.initPub = (app) => {
     app.get('/w1/hospital/:id', getHospital);
     app.post('/w1/hospital', addHospital);
     app.put('/w1/hospital/:id', updateHospital);
+    app.del('/w1/hospital/:id', deleteHospital);
 };
 function* getQueryList(next) {
     try {

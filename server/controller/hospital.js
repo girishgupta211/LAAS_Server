@@ -5,6 +5,7 @@ let Hospital = mongoose.model('Hospital'),
     wbshared = require('wb-shared'), 
     log = wbshared.logger.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) }), 
     constants = wbshared.utils.constants;
+//    regex = require('RegExp') ;
 
 exports.initSecured = (app) => {
     //<all : 4/men : 0/women : 1/kidb : 2/kidg : 3>
@@ -20,10 +21,19 @@ exports.initPub = (app) => {
 };
 function* getQueryList(next) {
     try {
-        let query = this.query.lquery;
+        let query = this.query.lquery.toString();
         log.info("Query Hospital : ", query);
-        let hospitalQueryList = yield Hospital.find({ Hospital_Name : { '$regex': query.toString() }
-        }).select('Hospital_Name Location').exec();
+        
+        var q =  query ?  { $or: [ 
+//            { Hospital_Name : new regexp(query,'i')  }  gkg issue RegExp not found
+            { Hospital_Name :{ '$regex':query } } 
+            ,{ Location :{ '$regex':query } } 
+//            ,{ Pincode :{ '$regex':query.toNumber()  } } 
+            ]} : {} ;
+
+
+        //let hospitalQueryList = yield Hospital.find(  { Hospital_Name : { '$regex': query.toString() }
+        let hospitalQueryList = yield Hospital.find(q).select('_id Hospital_Name Location Pincode').exec();
         this.body = hospitalQueryList;
         this.status = 200;
         yield next;

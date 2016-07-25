@@ -19,6 +19,14 @@ node-debug  washbayServer.js | node_modules/bunyan/bin/bunyan
 curl -i 'http://localhost:9135/w1/hospital/577fb4a814ca6f4b6f239267' -X GET
 curl -i 'http://localhost:9135/w1/hospitalquery?lquery=Radha'
 curl -i 'http://localhost:9135/w1/hospital' -X GET
-curl -i 'http://localhost:9135/w1/hospital/577fb4a814ca6f4b6f239273' -X PUT -d '{ "Emergency_Num":"9013001299"}' -H
+curl -i 'http://localhost:9135/w1/hospital/577fb4a814ca6f4b6f239273' -X PUT -d '{ "Emergency_Num":"9013001299"}' -H 'Content-Type:application/json' 
+
+curl -i 'http://localhost:9135/w1/restroom' -X POST -d '{ "name":"Sulabh Sauchalaya"}' -H 'Content-Type:application/json'
+curl -i 'http://localhost:9135/w1/restroom/579613421293333a1172181c' -X PUT -d '{ "name":"Public Toilet"}' -H
 'Content-Type:application/json' 
+curl -i 'http://localhost:9135/w1/restroom' -X GET
+curl -i 'http://localhost:9135/w1/restroomquery?lquery=oilet' -X GET
+curl -i 'http://localhost:9135/w1/restroom/579613421293333a1172181c' -X GET
+curl -i 'http://localhost:9135/w1/restroom/579613421293333a1172181c' -X DELETE
+curl -i 'http://localhost:9135/w1/restroom' -X POST -d '{ "name":"public toilet", "facilities":"paper shop, urinals, tissue papers"}' -H 'Content-Type:application/json'
 

@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 let Schema = mongoose.Schema, log = require('../utils/logger').root.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) }), bcrypt = require('..').utils.crypter, co = require('co'), constants = require('../utils/constants.js');
 
 var ratingSchema = new Schema({
-        restroomId : {type: ObjectId},
-        userId : {type: ObjectId},
+        restroomId : {type: Schema.Types.ObjectId},
+        userId : {type: Schema.Types.ObjectId},
         cleanliness : {type: Number ,  enum : [1,2,3,4,5]},
         privacy : {type: Number ,  enum : [1,2,3,4,5]},
         review : {type: String},

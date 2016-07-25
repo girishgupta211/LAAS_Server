@@ -9,19 +9,19 @@ var restroomSchema = new Schema({
             city : { type: String},
             state : {type: String},
             pincode : {type : String},
-            geoLoc : [type: Number],
+            geoLoc : [{type: Number}]
         },
         startTime : {type: Date} ,
-        endTime : {type: Date}
+        endTime : {type: Date},
         facilities :[ { type: String } ],
         mFacilty : {type: Boolean} ,
         fFacilty : {type: Boolean} ,
         daFacilty : {type: Boolean} ,
-        managedBy : {type: Schema.Type.ObjectId},
+        managedBy : {type: Schema.Types.ObjectId},
         createdBy : {type: String},
         createdDate : {type: Date , default : Date.Now},
         modifiedBy : {type: String},
-        modifiedDate : {type: Date , default ; Date.Now}
+        modifiedDate : {type: Date , default : Date.Now}
 
 }, {
     toJSON: {
@@ -36,4 +36,4 @@ restroomSchema.static('defRestroomSchema', function () {
         name : null
         }
 });
-mongoose.model('restroom', restroomSchema);
+mongoose.model('Restroom', restroomSchema);

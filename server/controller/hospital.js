@@ -36,12 +36,11 @@ function* getQueryList(next) {
 		let query = this.query.lquery.toString();
 		log.info("Query Hospital : ", query);
 
-		var q =  query ?  { $or: [ 
-			//            { Hospital_Name : new regexp(query,'i')  }  gkg issue RegExp not found
-			{ Hospital_Name :{ '$regex':query } } 
-			,{ Location :{ '$regex':query } } 
-			//            ,{ Pincode :{ '$regex':query.toNumber()  } } 
-			]} : {} ;
+        var q =  query ?  { $or: [ 
+            { Hospital_Name :{ '$regex':query, '$options':'i' } } ,
+            { Location :{ '$regex':query , '$options':'i' } } 
+//            { Pincode : Number.parseInt(this.query.pincode) } 
+            ]} : {} ;
 
 
 		//let hospitalQueryList = yield Hospital.find(  { Hospital_Name : { '$regex': query.toString() }

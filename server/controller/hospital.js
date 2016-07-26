@@ -20,21 +20,33 @@ exports.initPub = (app) => {
     app.del('/w1/hospital/:id', deleteHospital);
 };
 function* getQueryList(next) {
-    try {
-        let query = this.query.lquery.toString();
-        log.info("Query Hospital : ", query);
-        
-        var q =  query ?  { $or: [ 
-//            { Hospital_Name : new regexp(query,'i')  }  gkg issue RegExp not found
-            { Hospital_Name :{ '$regex':query } } 
-            ,{ Location :{ '$regex':query } } 
-//            ,{ Pincode :{ '$regex':query.toNumber()  } } 
-            ]} : {} ;
+	try 
+
+	{
+		let limit = 0;
+		if (this.query.limit) {
+			limit = this.query.limit;
+			limit = Number.parseInt(limit);
+		}
+   
+		let pageNumber = 0;
+		if (this.query.pageNumber)
+			pageNumber = this.query.pageNumber;
+
+		let query = this.query.lquery.toString();
+		log.info("Query Hospital : ", query);
+
+		var q =  query ?  { $or: [ 
+			//            { Hospital_Name : new regexp(query,'i')  }  gkg issue RegExp not found
+			{ Hospital_Name :{ '$regex':query } } 
+			,{ Location :{ '$regex':query } } 
+			//            ,{ Pincode :{ '$regex':query.toNumber()  } } 
+			]} : {} ;
 
 
-        //let hospitalQueryList = yield Hospital.find(  { Hospital_Name : { '$regex': query.toString() }
-        let hospitalQueryList = yield Hospital.find(q).select('_id Hospital_Name Location Pincode').exec();
-        this.body = hospitalQueryList;
+		//let hospitalQueryList = yield Hospital.find(  { Hospital_Name : { '$regex': query.toString() }
+		let hospitalQueryList = yield Hospital.find(q).select('_id Hospital_Name Location Pincode').skip((pageNumber) * limit).limit(limit).exec()
+		this.body = hospitalQueryList;
         this.status = 200;
         yield next;
     }

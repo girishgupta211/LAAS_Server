@@ -46,7 +46,7 @@ function* getQueryList(next) {
 		//let hospitalQueryList = yield Hospital.find(  { Hospital_Name : { '$regex': query.toString() }
 		//let hospitalQueryList = yield Hospital.find(q).select('_id Hospital_Name Location Pincode').skip((pageNumber) * limit).limit(limit).exec()
 
-		let hospitalQueryList = yield Hospital.find(q).select('_id Hospital_Name Location Pincode District State ').skip((pageNumber) * limit).limit(limit).exec()
+		let hospitalQueryList = yield Hospital.find(q).select('_id Hospital_Name Location Pincode District State Location_Coordinates  ').skip((pageNumber) * limit).limit(limit).exec()
 		this.body = hospitalQueryList;
         this.status = 200;
         yield next;

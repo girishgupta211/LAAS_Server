@@ -31,3 +31,4 @@ curl -i 'http://localhost:9135/w1/restroom/579613421293333a1172181c' -X GET
 curl -i 'http://localhost:9135/w1/restroom/579613421293333a1172181c' -X DELETE
 curl -i 'http://localhost:9135/w1/restroom' -X POST -d '{ "name":"public toilet", "facilities":"paper shop, urinals, tissue papers"}' -H 'Content-Type:application/json'
 
+http://52.77.213.22:9135/w1/hospitalquery?lquery=Delhi&limit=10&pageNumber=2

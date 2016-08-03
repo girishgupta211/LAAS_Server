@@ -28,22 +28,40 @@ function* getQueryList(next) {
 			limit = this.query.limit;
 			limit = Number.parseInt(limit);
 		}
-   
+  
+        //let district = "Alwar"
+        let district = "Alwar"
+        if(this.query.district)
+            district = this.query.district.toString();
+       
 		let pageNumber = 0;
 		if (this.query.pageNumber)
 			pageNumber = this.query.pageNumber;
+        
+        let query = "";
+        if(this.query.lquery)
+        	query = this.query.lquery.toString();
 
-		let query = this.query.lquery.toString();
-		log.info("Query Hospital : ", query);
+		log.info("Query pattern: ", query, "Limit: " ,limit ,"District: ", district, "pageNumber", pageNumber);
 
-        var q =  query ?  { $or: [ 
-            { Hospital_Name :{ '$regex':query, '$options':'i' } } ,
-            { Location :{ '$regex':query , '$options':'i' } } 
+        //var q =  query ?  { 
+        var q  = { 
+            $and :[ 
+                   { District :  { '$regex': district , '$options': 'i' } },
+                   { $or: [ 
+                         { Hospital_Name :{ '$regex':query, '$options':'i' } } ,
+                         { Location :{ '$regex':query , '$options':'i' } } 
+                      ]
+                   }
+                  ]
+                }
+             ;
+//                : {} ;
+
+
 //            { Pincode : Number.parseInt(this.query.pincode) } 
-            ]} : {} ;
 
-
-		//let hospitalQueryList = yield Hospital.find(  { Hospital_Name : { '$regex': query.toString() }
+//let hospitalQueryList = yield Hospital.find(  { Hospital_Name : { '$regex': query.toString() }
 		//let hospitalQueryList = yield Hospital.find(q).select('_id Hospital_Name Location Pincode').skip((pageNumber) * limit).limit(limit).exec()
 
 		let hospitalQueryList = yield Hospital.find(q).select('_id Hospital_Name Location Pincode District State Location_Coordinates  ').skip((pageNumber) * limit).limit(limit).exec()

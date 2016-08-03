@@ -19,6 +19,8 @@ node-debug  washbayServer.js | node_modules/bunyan/bin/bunyan
 curl -i 'http://localhost:9135/w1/hospital/577fb4a814ca6f4b6f239267' -X GET
 curl -i 'http://localhost:9135/w1/hospitalquery?lquery=Radha'
 curl -i 'http://localhost:9135/w1/hospitalquery?lquery=Radha&limit=10&pageNumber=2'
+curl -i 'http://localhost:9135/w1/hospitalquery?lquery=Saraswati&limit=10&pageNumber=0&district=Pune'
+
 curl -i 'http://localhost:9135/w1/hospital' -X GET
 curl -i 'http://localhost:9135/w1/hospital/577fb4a814ca6f4b6f239273' -X PUT -d '{ "Emergency_Num":"9013001299"}' -H 'Content-Type:application/json' 
 

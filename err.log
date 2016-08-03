@@ -1,0 +1,247 @@
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE :::9135
+    at Object.exports._errnoException (util.js:1008:11)
+    at exports._exceptionWithHostPort (util.js:1031:20)
+    at Server._listen2 (net.js:1253:14)
+    at listen (net.js:1289:10)
+    at Server.listen (net.js:1385:5)
+    at Application.app.listen (/home/ec2-user/LAAS_Server/node_modules/koa/lib/application.js:70:24)
+    at /home/ec2-user/LAAS_Server/washbayServer.js:20:26
+    at Object.<anonymous> (/home/ec2-user/LAAS_Server/washbayServer.js:13:21)
+    at Module._compile (module.js:541:32)
+    at Object.Module._extensions..js (module.js:550:10)
+    at Module.load (module.js:458:32)
+    at tryModuleLoad (module.js:417:12)
+    at Function.Module._load (module.js:409:3)
+    at Module.runMain (module.js:575:10)
+    at run (bootstrap_node.js:352:7)
+    at startup (bootstrap_node.js:144:9)
+
+/home/ec2-user/LAAS_Server/node_modules/mongoose/lib/index.js:349
+      throw new mongoose.Error.MissingSchemaError(name);
+      ^
+MissingSchemaError: Schema hasn't been registered for model "Restroom".
+Use mongoose.model(name, schema)
+    at Mongoose.model (/home/ec2-user/LAAS_Server/node_modules/mongoose/lib/index.js:349:13)
+    at Object.<anonymous> (/home/ec2-user/LAAS_Server/server/controller/restroom.js:4:25)
+    at Module._compile (module.js:541:32)
+    at Object.Module._extensions..js (module.js:550:10)
+    at Module.load (module.js:458:32)
+    at tryModuleLoad (module.js:417:12)
+    at Function.Module._load (module.js:409:3)
+    at Module.require (module.js:468:17)
+    at require (internal/module.js:20:19)
+    at /home/ec2-user/LAAS_Server/server/config/koa.js:34:26
+    at Array.forEach (native)
+    at module.exports (/home/ec2-user/LAAS_Server/server/config/koa.js:31:43)
+    at Object.<anonymous> (/home/ec2-user/LAAS_Server/washbayServer.js:11:1)
+    at Module._compile (module.js:541:32)
+    at Object.Module._extensions..js (module.js:550:10)
+    at Module.load (module.js:458:32)
+(node:14598) DeprecationWarning: Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
+
+  UnauthorizedError: No Authorization header found
+  
+      at Object.module.exports.throw (/home/ec2-user/LAAS_Server/node_modules/koa/lib/context.js:89:23)
+      at Object.jwt (/home/ec2-user/LAAS_Server/node_modules/koa-jwt/index.js:37:19)
+      at next (native)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:65:19)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+
+
+  UnauthorizedError: No Authorization header found
+  
+      at Object.module.exports.throw (/home/ec2-user/LAAS_Server/node_modules/koa/lib/context.js:89:23)
+      at Object.jwt (/home/ec2-user/LAAS_Server/node_modules/koa-jwt/index.js:37:19)
+      at next (native)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:65:19)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+
+(node:20324) DeprecationWarning: Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
+
+  UnauthorizedError: No Authorization header found
+  
+      at Object.module.exports.throw (/home/ec2-user/LAAS_Server/node_modules/koa/lib/context.js:89:23)
+      at Object.jwt (/home/ec2-user/LAAS_Server/node_modules/koa-jwt/index.js:37:19)
+      at next (native)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:65:19)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+
+(node:21095) DeprecationWarning: Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
+
+  UnauthorizedError: No Authorization header found
+  
+      at Object.module.exports.throw (/home/ec2-user/LAAS_Server/node_modules/koa/lib/context.js:89:23)
+      at Object.jwt (/home/ec2-user/LAAS_Server/node_modules/koa-jwt/index.js:37:19)
+      at next (native)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:65:19)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+
+
+  UnauthorizedError: No Authorization header found
+  
+      at Object.module.exports.throw (/home/ec2-user/LAAS_Server/node_modules/koa/lib/context.js:89:23)
+      at Object.jwt (/home/ec2-user/LAAS_Server/node_modules/koa-jwt/index.js:37:19)
+      at next (native)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:65:19)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+
+
+  UnauthorizedError: No Authorization header found
+  
+      at Object.module.exports.throw (/home/ec2-user/LAAS_Server/node_modules/koa/lib/context.js:89:23)
+      at Object.jwt (/home/ec2-user/LAAS_Server/node_modules/koa-jwt/index.js:37:19)
+      at next (native)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:65:19)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+
+
+  UnauthorizedError: No Authorization header found
+  
+      at Object.module.exports.throw (/home/ec2-user/LAAS_Server/node_modules/koa/lib/context.js:89:23)
+      at Object.jwt (/home/ec2-user/LAAS_Server/node_modules/koa-jwt/index.js:37:19)
+      at next (native)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:65:19)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+
+
+  UnauthorizedError: No Authorization header found
+  
+      at Object.module.exports.throw (/home/ec2-user/LAAS_Server/node_modules/koa/lib/context.js:89:23)
+      at Object.jwt (/home/ec2-user/LAAS_Server/node_modules/koa-jwt/index.js:37:19)
+      at next (native)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:65:19)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+
+
+  UnauthorizedError: No Authorization header found
+  
+      at Object.module.exports.throw (/home/ec2-user/LAAS_Server/node_modules/koa/lib/context.js:89:23)
+      at Object.jwt (/home/ec2-user/LAAS_Server/node_modules/koa-jwt/index.js:37:19)
+      at next (native)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:65:19)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+
+
+  UnauthorizedError: No Authorization header found
+  
+      at Object.module.exports.throw (/home/ec2-user/LAAS_Server/node_modules/koa/lib/context.js:89:23)
+      at Object.jwt (/home/ec2-user/LAAS_Server/node_modules/koa-jwt/index.js:37:19)
+      at next (native)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:65:19)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+      at Object.toPromise (/home/ec2-user/LAAS_Server/node_modules/co/index.js:118:63)
+      at next (/home/ec2-user/LAAS_Server/node_modules/co/index.js:99:29)
+      at onFulfilled (/home/ec2-user/LAAS_Server/node_modules/co/index.js:69:7)
+      at /home/ec2-user/LAAS_Server/node_modules/co/index.js:54:5
+      at Object.co (/home/ec2-user/LAAS_Server/node_modules/co/index.js:50:10)
+
+(node:12292) DeprecationWarning: Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html

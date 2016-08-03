@@ -13,6 +13,7 @@ exports.initSecured = (app) => {
 };
 exports.initPub = (app) => {
     app.get('/w1/hospital', getListHospital);
+    app.get('/w1/district', getListDistrict);
     app.get('/w1/hospitalquery', getQueryList);
     app.get('/w1/hospital/:id', getHospital);
     app.post('/w1/hospital', addHospital);
@@ -90,6 +91,25 @@ function* getHospital(next) {
         this.status = 404;
     }
 }
+
+function* getListDistrict(next) {
+     try {
+        log.info("Get List District ");
+        let districtList;
+        districtList = yield Hospital.distinct("District").sort().exec();
+        this.body = districtList;
+        this.status = 200;
+        yield next;
+    }
+    catch (error) {
+        log.error('Exception caught in populating districtList  : ', error);
+        this.body = "Error in processing District List request";
+        this.status = 404;
+    }
+
+
+}
+
 function* getListHospital(next) {
     try {
         log.info("Get List Hospital ");

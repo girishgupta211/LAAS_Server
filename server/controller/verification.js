@@ -35,7 +35,7 @@ function* signin(next) {
         else {
             this.response.set('Access-Control-Expose-Headers', 'authorization');
             this.response.set('authorization', koajwt.sign({ _id: userSearch.user }, config.systemConfig.app.privateKey));
-            this.body = "SignIn Successfull";
+            this.body = (yield User.findOne(userSearch.user).exec());
             this.status = 200;
         }
         yield next;
@@ -60,7 +60,7 @@ function* signUp(next) {
         let userSave = yield new User(signUpBody).save();
         this.response.set('Access-Control-Expose-Headers', 'authorization');
         this.response.set('authorization', koajwt.sign({ _id: userSave._id }, config.systemConfig.app.privateKey));
-        this.body = "SignUp Successfull";
+        this.body = {"msg":"SignUp Successfull"}
         this.status = 200;
         yield next;
     }

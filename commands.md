@@ -41,3 +41,7 @@ curl -i 'http://localhost:9135/w1/mci' -X GET
 curl -i 'http://localhost:9135/w1/mci/57b3f1427edd76d3dd777b5a'
 curl -i 'http://localhost:9135/w1/council/'
 curl -i 'http://localhost:9135/w1/mciquery?Council=Maharashtra&lquery=mukesh&limit=10&pageNumber=0' 
+curl -i 'http://localhost:9135/w1/bloodbank' -X GET
+curl -i 'http://localhost:9135/w1/bloodbank/57b477167edd76d3dd815af0' -X GET
+curl -i 'http://localhost:9135/w1/city' -X GET
+curl -i 'http://localhost:9135/w1/bloodbankquery?lquery=Guru&limit=10&pageNumber=0&city=delhi'

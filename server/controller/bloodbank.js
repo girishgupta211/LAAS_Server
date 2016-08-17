@@ -13,7 +13,7 @@ exports.initSecured = (app) => {
 };
 exports.initPub = (app) => {
     app.get('/w1/bloodbank', getListBloodbank);
-    app.get('/w1/district', getListDistrict);
+    app.get('/w1/city', getListCity);
     app.get('/w1/bloodbankquery', getQueryList);
     app.get('/w1/bloodbank/:id', getBloodbank);
     app.post('/w1/bloodbank', addBloodbank);
@@ -31,9 +31,9 @@ function* getQueryList(next) {
 		}
   
         //let district = "Alwar"
-        let district = "Alwar"
-        if(this.query.district)
-            district = this.query.district.toString();
+        let city = "delhi"
+        if(this.query.city)
+            city = this.query.city.toString();
        
 		let pageNumber = 0;
 		if (this.query.pageNumber)
@@ -43,29 +43,22 @@ function* getQueryList(next) {
         if(this.query.lquery)
         	query = this.query.lquery.toString();
 
-		log.info("Query pattern: ", query, "Limit: " ,limit ,"District: ", district, "pageNumber", pageNumber);
+		log.info("Query pattern: ", query, "Limit: " ,limit ,"City: ",city, "pageNumber", pageNumber);
 
         //var q =  query ?  { 
         var q  = { 
             $and :[ 
-                   { District :  { '$regex': district , '$options': 'i' } },
+                   { city :  { '$regex': city , '$options': 'i' } },
                    { $or: [ 
-                         { Bloodbank_Name :{ '$regex':query, '$options':'i' } } ,
-                         { Location :{ '$regex':query , '$options':'i' } } 
+                         { h_name :{ '$regex':query, '$options':'i' } } 
                       ]
                    }
                   ]
                 }
              ;
-//                : {} ;
 
 
-//            { Pincode : Number.parseInt(this.query.pincode) } 
-
-//let bloodbankQueryList = yield Bloodbank.find(  { Bloodbank_Name : { '$regex': query.toString() }
-		//let bloodbankQueryList = yield Bloodbank.find(q).select('_id Bloodbank_Name Location Pincode').skip((pageNumber) * limit).limit(limit).exec()
-
-		let bloodbankQueryList = yield Bloodbank.find(q).select('_id Bloodbank_Name Location Pincode District State Location_Coordinates  ').skip((pageNumber) * limit).limit(limit).exec()
+		let bloodbankQueryList = yield Bloodbank.find(q).skip((pageNumber) * limit).limit(limit).exec()
 		this.body = bloodbankQueryList;
         this.status = 200;
         yield next;
@@ -92,18 +85,18 @@ function* getBloodbank(next) {
     }
 }
 
-function* getListDistrict(next) {
+function* getListCity(next) {
      try {
-        log.info("Get List District ");
-        let districtList;
-        districtList = yield Bloodbank.distinct("District").sort().exec();
-        this.body = districtList;
+        log.info("Get List City ");
+        let cityList;
+        cityList = yield Bloodbank.distinct("city").sort().exec();
+        this.body = cityList;
         this.status = 200;
         yield next;
     }
     catch (error) {
-        log.error('Exception caught in populating districtList  : ', error);
-        this.body = "Error in processing District List request";
+        log.error('Exception caught in populating cityList  : ', error);
+        this.body = "Error in processing City List request";
         this.status = 404;
     }
 

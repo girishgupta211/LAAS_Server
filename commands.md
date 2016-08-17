@@ -36,5 +36,8 @@ curl -i 'http://localhost:9135/w1/restroom' -X POST -d '{ "name":"public toilet"
 http://52.77.213.22:9135/w1/hospitalquery?lquery=Delhi&limit=10&pageNumber=2
 
 Get MCI data
- curl -i 'http://localhost:9135/w1/mciquery?limit=10&pageNumber=2' -X GET
+curl -i 'http://localhost:9135/w1/mciquery?limit=10&pageNumber=2' -X GET
 curl -i 'http://localhost:9135/w1/mci' -X GET
+curl -i 'http://localhost:9135/w1/mci/57b3f1427edd76d3dd777b5a'
+curl -i 'http://localhost:9135/w1/council/'
+curl -i 'http://localhost:9135/w1/mciquery?Council=Maharashtra&lquery=mukesh&limit=10&pageNumber=0' 

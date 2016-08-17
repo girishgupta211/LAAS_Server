@@ -13,7 +13,7 @@ exports.initSecured = (app) => {
 };
 exports.initPub = (app) => {
     app.get('/w1/mci', getListMci);
-    app.get('/w1/district', getListDistrict);
+    app.get('/w1/council', getListCouncil);
     app.get('/w1/mciquery', getQueryList);
     app.get('/w1/mci/:id', getMci);
     app.post('/w1/mci', addMci);
@@ -30,10 +30,9 @@ function* getQueryList(next) {
 			limit = Number.parseInt(limit);
 		}
   
-        //let district = "Alwar"
-//        let district = "Alwar"
-  //      if(this.query.district)
-    //        district = this.query.district.toString();
+        let council = ""
+        if(this. query.council)
+            council = this.query.council.toString();
        
 		let pageNumber = 0;
 		if (this.query.pageNumber)
@@ -43,17 +42,17 @@ function* getQueryList(next) {
         if(this.query.lquery)
         	query = this.query.lquery.toString();
 
-		//log.info("Query pattern: ", query, "Limit: " ,limit ,"District: ", district, "pageNumber", pageNumber);
-		log.info("Query pattern: ", query, "Limit: " ,limit , "pageNumber", pageNumber);
+        var q  = { 
+            $and :[  
+            { Lbl_Council :  { '$regex': council , '$options': 'i' } },
+            { $or: [ { Name :{ '$regex':query, '$options':'i' } } ] }
+            ]   
+        } ;   
 
 
-//            { Pincode : Number.parseInt(this.query.pincode) } 
+        log.info("Query pattern: ", query, "Limit: " ,limit ,"Council: ",council, "pageNumber", pageNumber);
 
-//let mciQueryList = yield Mci.find(  { Mci_Name : { '$regex': query.toString() }
-		//let mciQueryList = yield Mci.find(q).select('_id Mci_Name Location Pincode').skip((pageNumber) * limit).limit(limit).exec()
-
-
-		let mciQueryList = yield Mci.find({}).select('Regis_no Name Qual DOB Lbl_Council FatherName QualYear Address  Date_Regi ,Univ,Lbl_Council  ').skip((pageNumber) * limit).limit(limit).exec()
+		let mciQueryList = yield Mci.find(q).select('Regis_no Name Qual DOB Lbl_Council FatherName QualYear Address  Date_Regi ,Univ,Lbl_Council  ').skip((pageNumber) * limit).limit(limit).exec()
 		this.body = mciQueryList;
         this.status = 200;
         yield next;
@@ -80,18 +79,18 @@ function* getMci(next) {
     }
 }
 
-function* getListDistrict(next) {
+function* getListCouncil(next) {
      try {
-        log.info("Get List District ");
-        let districtList;
-        districtList = yield Mci.distinct("District").sort().exec();
-        this.body = districtList;
+        log.info("Get List Council ");
+        let councilList;
+        councilList = yield Mci.distinct("Lbl_Council").sort().exec();
+        this.body = councilList;
         this.status = 200;
         yield next;
     }
     catch (error) {
-        log.error('Exception caught in populating districtList  : ', error);
-        this.body = "Error in processing District List request";
+        log.error('Exception caught in populating councilList  : ', error);
+        this.body = "Error in processing Council List request";
         this.status = 404;
     }
 

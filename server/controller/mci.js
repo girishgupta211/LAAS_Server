@@ -31,9 +31,9 @@ function* getQueryList(next) {
 		}
   
         //let district = "Alwar"
-        let district = "Alwar"
-        if(this.query.district)
-            district = this.query.district.toString();
+//        let district = "Alwar"
+  //      if(this.query.district)
+    //        district = this.query.district.toString();
        
 		let pageNumber = 0;
 		if (this.query.pageNumber)
@@ -43,21 +43,8 @@ function* getQueryList(next) {
         if(this.query.lquery)
         	query = this.query.lquery.toString();
 
-		log.info("Query pattern: ", query, "Limit: " ,limit ,"District: ", district, "pageNumber", pageNumber);
-
-        //var q =  query ?  { 
-        var q  = { 
-            $and :[ 
-                   { District :  { '$regex': district , '$options': 'i' } },
-                   { $or: [ 
-                         { Mci_Name :{ '$regex':query, '$options':'i' } } ,
-                         { Location :{ '$regex':query , '$options':'i' } } 
-                      ]
-                   }
-                  ]
-                }
-             ;
-//                : {} ;
+		//log.info("Query pattern: ", query, "Limit: " ,limit ,"District: ", district, "pageNumber", pageNumber);
+		log.info("Query pattern: ", query, "Limit: " ,limit , "pageNumber", pageNumber);
 
 
 //            { Pincode : Number.parseInt(this.query.pincode) } 
@@ -65,7 +52,8 @@ function* getQueryList(next) {
 //let mciQueryList = yield Mci.find(  { Mci_Name : { '$regex': query.toString() }
 		//let mciQueryList = yield Mci.find(q).select('_id Mci_Name Location Pincode').skip((pageNumber) * limit).limit(limit).exec()
 
-		let mciQueryList = yield Mci.find(q).select('_id Mci_Name Location Pincode District State Location_Coordinates  ').skip((pageNumber) * limit).limit(limit).exec()
+
+		let mciQueryList = yield Mci.find({}).select('Regis_no Name Qual DOB Lbl_Council FatherName QualYear Address  Date_Regi ,Univ,Lbl_Council  ').skip((pageNumber) * limit).limit(limit).exec()
 		this.body = mciQueryList;
         this.status = 200;
         yield next;

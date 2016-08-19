@@ -33,10 +33,39 @@ function* getQueryList(next) {
 		let pageNumber = 0;
 		if (this.query.pageNumber)
 			pageNumber = this.query.pageNumber;
+      
+        let city = "Delhi"
+        if(this. query.council)
+            city = this.query.city.toString();
+
+        let query = ""; 
+        if(this.query.lquery)
+            query = this.query.lquery.toString
+
+//    db.doctors.aggregate(
+      let  q = [
+       {'$unwind':'$relations'} ,
+       { '$match' : {
+         '$and' : [ 
+            {'relations.practice.locality.city.name' : {   '$regex':city, '$options' : 'i' } },
+            { '$or' :  [
+//                {'name' : {   '$regex':'ravi', '$options' : 'i' } } , 
+                {'relations.practice.locality.name' : {   '$regex': 'pra' , '$options' : 'i' } } 
+             ]}
+        ]}} ,
         
+       // { '$project' : { 'name':1 ,"gender" :1  }  }
+
+        ];
+
+
+
+                       
+
 
 		//let doctorQueryList = yield Doctor.find({}).select('_id Doctor_Name Location Pincode District State Location_Coordinates  ').skip((pageNumber) * limit).limit(limit).exec()
-		let doctorQueryList = yield Doctor.find({}).skip((pageNumber) * limit).limit(limit).exec()
+		//let doctorQueryList = yield Doctor.find({}).skip((pageNumber) * limit).limit(limit).exec()
+		let doctorQueryList = yield Doctor.aggregate(q).skip((pageNumber) * limit).limit(limit).exec()
 		this.body = doctorQueryList;
         this.status = 200;
         yield next;

@@ -35,7 +35,7 @@ function* getQueryList(next) {
 			pageNumber = this.query.pageNumber;
       
         let city = "Delhi"
-        if(this. query.council)
+        if(this. query.city)
             city = this.query.city.toString();
 
         let query = ""; 
@@ -54,7 +54,10 @@ function* getQueryList(next) {
              ]}
         ]}} ,
         
-       // { '$project' : { 'name':1 ,"gender" :1  }  }
+       { '$project' : { 'name':1 ,"gender" :1
+       ,"practicing_start_year":1,"specializations_to_show_beneath_name":1,"relations.consultation_fee":1 ,
+       "relations.practice.locality":1 , "relations.practice.street_address":1,
+       "relations.practice.latitude":1,"relations.practice.longitude":1,"relations.practice.timings":1 }  }
 
         ];
 

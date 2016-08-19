@@ -21,17 +21,28 @@
   "scripts": {
 
   },
+  "devDependencies": {
+    "bench-rest": "*",
+    "chai": "^3.5.0",
+    "commander": "*",
+    "csv-parse": "*",
+    "csv-stringify": "*",
+    "mocha": "^2.5.3",
+    "adm-zip":"latest",
+    "progress2": "*",
+    "remodal": "^1.1.0",
+    "should": "^8.4.0",
+    "supertest": "^1.2.0"
+  },
   "dependencies": {
     "bunyan": "~1",
     "co": "~4",
     "co-fs": "latest",
     "co-redis": "^1.2.1",
     "co-request": "~0",
-
     "wb-shared": "file:wb-shared",
-
     "koa": "~0",
-    "koa-better-body": "latest",
+    "koa-better-body": "1.0.17",
     "koa-compose": "2.3.0",
     "koa-compress": "latest",
     "koa-cors": "0.0.16",
@@ -42,13 +53,31 @@
     "koa-response-time": "latest",
     "koa-router": "5.2.3",
     "koa-send": "~1",
+    "csv-parser": "latest",
+    "koa-device": "latest",
+    "koa-ip-geo": "latest",
+    "koa-static": "latest",
+    "koa-swig": "latest",
+    "path": "latest",
+    "base-64": "latest",
     "koa-session-mongoose": "latest",
-
     "lodash": "~3",
-
+    "mobile-detect": "latest",
     "mongodb": "latest",
     "mongoose": "latest",
-
-    "image-size": "latest"
+    "mz": "^2.0.0",
+    "nodemailer": "^1.4.0",
+    "sendgrid": "^1.9.2",
+    "redis": "^0.12.1",
+    "gm": "latest",
+    "image-size": "latest",
+    "shortid":"latest",
+    "json2csv": "^3.2.0",
+    "msexcel-builder": "0.0.2",
+    "python-shell": "^0.4.0",
+    "officegen": "latest",
+    "html-pdf": "latest",
+    "exceljs": "latest",
+    "hashtable-js": "latest"
   }
 }

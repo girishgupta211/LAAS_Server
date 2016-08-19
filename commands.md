@@ -41,9 +41,18 @@ curl -i 'http://localhost:9135/w1/mci' -X GET
 curl -i 'http://localhost:9135/w1/mci/57b3f1427edd76d3dd777b5a'
 curl -i 'http://localhost:9135/w1/council/'
 curl -i 'http://localhost:9135/w1/mciquery?Council=Maharashtra&lquery=mukesh&limit=10&pageNumber=0' 
+
+Get Blood Bank Data
 curl -i 'http://localhost:9135/w1/bloodbank' -X GET
 curl -i 'http://localhost:9135/w1/bloodbank/57b477167edd76d3dd815af0' -X GET
 curl -i 'http://localhost:9135/w1/city' -X GET
 curl -i 'http://localhost:9135/w1/bloodbankquery?lquery=Guru&limit=10&pageNumber=0&city=delhi'
+
+
+Get Doctors  Data
 curl -i 'http://localhost:9135/w1/cities' -X GET
 curl -i 'http://localhost:9135/w1/doctorquery?lquery=pr&limit=10&pageNumber=0&city=jaipur'
+curl -i 'http://localhost:9135/w1/doctor/57b3f9b27edd76d3dd7fd3b7'
+Sign IN
+curl -i http://localhost:9135/v1/signin -d '{"password":"q", "userId" : "msaa@gmail.com"}' -X POST -H 'Content-Type:application/json'
+curl -i 'http://localhost:9135/v1/user' -d '{"name" : {"first" : "Girish"},"password":"q", "gender": "M", "email" : "girishgargdce@gmail.com", "phone":"9013001288" }' -X POST -H 'Content-Type:application/json'

@@ -45,3 +45,5 @@ curl -i 'http://localhost:9135/w1/bloodbank' -X GET
 curl -i 'http://localhost:9135/w1/bloodbank/57b477167edd76d3dd815af0' -X GET
 curl -i 'http://localhost:9135/w1/city' -X GET
 curl -i 'http://localhost:9135/w1/bloodbankquery?lquery=Guru&limit=10&pageNumber=0&city=delhi'
+curl -i 'http://localhost:9135/w1/cities' -X GET
+curl -i 'http://localhost:9135/w1/doctorquery?lquery=pr&limit=10&pageNumber=0&city=jaipur'

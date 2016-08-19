@@ -13,7 +13,7 @@ exports.initSecured = (app) => {
 };
 exports.initPub = (app) => {
     app.get('/w1/doctor', getListDoctor);
-    app.get('/w1/district', getListDistrict);
+    app.get('/w1/cities', getListCities);
     app.get('/w1/doctorquery', getQueryList);
     app.get('/w1/doctor/:id', getDoctor);
     app.post('/w1/doctor', addDoctor);
@@ -92,18 +92,18 @@ function* getDoctor(next) {
     }
 }
 
-function* getListDistrict(next) {
+function* getListCities(next) {
      try {
-        log.info("Get List District ");
-        let districtList;
-        districtList = yield Doctor.distinct("District").sort().exec();
-        this.body = districtList;
+        log.info("Get List Cities ");
+        let cityList;
+        cityList = yield Doctor.distinct("relations.practice.locality.city.name").sort().exec();
+        this.body = cityList;
         this.status = 200;
         yield next;
     }
     catch (error) {
-        log.error('Exception caught in populating districtList  : ', error);
-        this.body = "Error in processing District List request";
+        log.error('Exception caught in populating cityList  : ', error);
+        this.body = "Error in processing City List request";
         this.status = 404;
     }
 

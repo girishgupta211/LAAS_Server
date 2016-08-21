@@ -31,8 +31,8 @@ function* getQueryList(next) {
 		}
   
         let council = "Delhi"
-        if(this. query.council)
-            council = this.query.council.toString();
+        if(this. query.Council)
+            council = this.query.Council.toString();
        
 		let pageNumber = 0;
 		if (this.query.pageNumber)

@@ -4,7 +4,7 @@ let Schema = mongoose.Schema, log = require('../utils/logger').root.child({ 'mod
 
 var MciSchema = new Schema({
     "Regis_no": {
-    "type": "date"
+    "type": "string"
     },
     "Name": {
     "type": "string"

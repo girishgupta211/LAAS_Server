@@ -45,14 +45,17 @@ function* getQueryList(next) {
         var q  = { 
             $and :[  
             { Lbl_Council :  { '$regex': council , '$options': 'i' } },
-            { $or: [ { Name :{ '$regex':query, '$options':'i' } } ] }
+            { $or: [ 
+            { Name :{ '$regex':query, '$options':'i' } }, 
+            { Regis_no :{ '$regex':query, '$options':'i' } } 
+                ] }
             ]   
         } ;   
 
 
         log.info("Query pattern: ", query, "Limit: " ,limit ,"Council: ",council, "pageNumber", pageNumber);
 
-		let mciQueryList = yield Mci.find(q).select('Regis_no Name Qual DOB Lbl_Council FatherName QualYear Address  Date_Regi ,Univ,Lbl_Council  ').skip((pageNumber) * limit).limit(limit).exec()
+		let mciQueryList = yield Mci.find(q).select().skip((pageNumber) * limit).limit(limit).exec()
 		this.body = mciQueryList;
         this.status = 200;
         yield next;

@@ -276,8 +276,8 @@ function* signup(next) {
             var emailBody = {
                 "to": userDesc["email"],
                 //"from": wbshared.config.email.account,
-                "from":  "girish.gupta@geminisolutions.in", 
-                "subject": "FourSight Survey Email verification",
+                "from":  "info@medosto.com", 
+                "subject": "Medosto Email verification",
                 "text": userDesc["VerifyURL"]
             };
             util.sendEmailAsync(emailBody);

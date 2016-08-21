@@ -1,5 +1,6 @@
 'use strict';
-var sendgrid = require('sendgrid')('QuickLoo', "root1234");
+//var sendgrid = require('sendgrid')('medosto', "root1234");
+var sendgrid = require('sendgrid')("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");
 let l = require('./logger').root.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) });
 let querystring = require('querystring'), request = require('co-request'), wbshared = require('..'), co = require('co');
 exports.makeMongoUrl = makeMongoUrl;

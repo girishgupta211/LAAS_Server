@@ -58,3 +58,5 @@ curl -i 'http://localhost:9135/w1/doctor/57b3f9b27edd76d3dd7fd3b7'
 Sign IN
 curl -i http://localhost:9135/v1/signin -d '{"password":"q", "userId" : "msaa@gmail.com"}' -X POST -H 'Content-Type:application/json'
 curl -i 'http://localhost:9135/v1/user' -d '{"name" : {"first" : "Girish"},"password":"q", "gender": "M", "email" : "girishgargdce@gmail.com", "phone":"9013001288" }' -X POST -H 'Content-Type:application/json'
+Clinic APIs
+curl -i 'http://localhost:9135/w1/doctorquery?lquery=pr&limit=2&pageNumber=0&city=jaipur'

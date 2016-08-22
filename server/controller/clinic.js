@@ -34,11 +34,11 @@ function* getQueryList(next) {
 		if (this.query.pageNumber)
 			pageNumber = this.query.pageNumber;
       
-        let city = "Delhi"
+        let city = "Hyderabad"
         if(this. query.city)
             city = this.query.city.toString();
         
-        let area = "Delhi"
+        let area = "Balkampet"
         if(this. query.area)
             area = this.query.area.toString();
 
@@ -54,10 +54,9 @@ function* getQueryList(next) {
         if(this.query.name)
             name = this.query.name.toString
 
-//    db.clinics.aggregate(
-      let q =  {"Practice.Area":"Balkampet" , "Practice.City":"Hyderabad" }
+      let q2 =  {"Practice.Area":"Balkampet" , "Practice.City":"Hyderabad" }
 
-      let  q2 = [
+      let  q = [
        {'$unwind':'$Practice'} ,
        { '$match' : {
          '$and' : [ 
@@ -76,15 +75,7 @@ function* getQueryList(next) {
 
         ];
 
-
-
-                       
-
-
-		//let clinicQueryList = yield Clinic.find({}).select('_id Clinic_Name Location Pincode District State Location_Coordinates  ').skip((pageNumber) * limit).limit(limit).exec()
-		//let clinicQueryList = yield Clinic.find({}).skip((pageNumber) * limit).limit(limit).exec()
-		//let clinicQueryList = yield Clinic.aggregate(q).skip((pageNumber) * limit).limit(limit).exec()
-		let clinicQueryList = yield Clinic.find(q).skip((pageNumber) * limit).limit(limit).exec()
+	    let clinicQueryList = yield Clinic.aggregate(q).skip((pageNumber) * limit).limit(limit).exec()
 		this.body = clinicQueryList;
         this.status = 200;
         yield next;

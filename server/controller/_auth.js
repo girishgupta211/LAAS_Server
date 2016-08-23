@@ -276,8 +276,8 @@ function* signup(next) {
             var emailBody = {
                 "to": userDesc["email"],
                 //"from": wbshared.config.email.account,
-                "from":  "info@medosto.com", 
-                "subject": "Medosto Email verification",
+                "from":  "info@quickloo.com", 
+                "subject": "QuickLoo Email verification",
                 "text": userDesc["VerifyURL"]
             };
             util.sendEmailAsync(emailBody);

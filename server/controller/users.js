@@ -1,7 +1,7 @@
 'use strict';
 const mongoose = require('mongoose');
 let wbshared = require('wb-shared'), jwt = require('koa-jwt'), config = wbshared.config, util = wbshared.utils.util, l = wbshared.logger.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) }), logmeta = { module: __filename.substring(__dirname.length + 1, __filename.length - 3) }, User = mongoose.model('User') , fs = require('fs'), csv = require('csv-parser'), _authFile = require('../controller/_auth.js'), Response = mongoose.model('Response');
-var sendgrid = require('sendgrid')('medosto', "root1234");
+var sendgrid = require('sendgrid')("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");
 exports.initSecured = function (app) {
     app.get("/v1/user", getUser);
     app.put("/v1/user", updateUser);

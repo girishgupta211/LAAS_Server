@@ -1,6 +1,7 @@
 'use strict';
 const mongoose = require('mongoose');
-let /* bcrypt = require('..').lib.bcrypt_thunk, */wbshared = require('..'), l = require('../utils/logger').root.child({
+//let  bcrypt = require('..').lib.bcrypt_thunk, wbshared = require('..'), l = require('../utils/logger').root.child({
+let  bcrypt = require('../lib/bcrypt_thunk'), wbshared = require('..'), l = require('../utils/logger').root.child({
     'module': __filename.substring(__dirname.length + 1, __filename.length - 3)
 }), Constants = require('../utils/constants'), createModifiedPlugin = require('mongoose-createdmodified').createdModifiedPlugin, Schema = mongoose.Schema, co = require('co'), request = require('co-request');
 var UserSchema = new Schema({
@@ -157,7 +158,7 @@ var UserSchema = new Schema({
     }
 });
 
-/*UserSchema.pre('save', function (done) {
+UserSchema.pre('save', function (done) {
     if (!this.isModified('password')) {
         return done();
     }
@@ -176,11 +177,11 @@ var UserSchema = new Schema({
         done(err);
     });
 });
-*/
+
 UserSchema.plugin(createModifiedPlugin);
-/*UserSchema.method("comparePassword", function* (candidatePassword) {
+UserSchema.method("comparePassword", function* (candidatePassword) {
     return yield bcrypt.compare(candidatePassword, this.password);
-});*/
+});
 UserSchema.static("findUserQuery", function findUserQuery(userId) {
     if (userId.match('@')) {
         return {

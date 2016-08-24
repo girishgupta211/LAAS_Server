@@ -1,4 +1,5 @@
 'use strict';
+var sendgrid = require('sendgrid')("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");
 var mongoose = require('mongoose');
 let wbshared = require('wb-shared'), kjwt = require('koa-jwt'), config = wbshared.config, User = mongoose.model('User'), util = wbshared.utils.util, constants = wbshared.utils.constants, jwt = require('koa-jwt'), l = wbshared.logger.child({ 'module': __filename.substring(__dirname.length + 1, __filename.length - 3) }), logmeta = { module: __filename.substring(__dirname.length + 1, __filename.length - 3) };
 var imgfile = require('../controller/img');
@@ -243,7 +244,7 @@ function* signin(next) {
         }
         else {
             this.response.set('Access-Control-Expose-Headers', 'authorization');
-            this.response.set('authorization', jwt.sign({ _id: res.user.id, sTime: Date.now() }, config.app.privateKey));
+            this.response.set('authorization', jwt.sign({ _id: res.user.id, sTime: Date.now() }, config.systemConfig.app.privateKey));
             this.cookies.set('survey', this.response.authorization, { signed: true });
             this.status = 200;
             this.body = res.user;
@@ -277,10 +278,19 @@ function* signup(next) {
                 "to": userDesc["email"],
                 //"from": wbshared.config.email.account,
                 "from":  "info@quickloo.com", 
-                "subject": "QuickLoo Email verification",
-                "text": userDesc["VerifyURL"]
+                "subject": "QuickLoo Email verification"
+//                "text": userDesc["VerifyURL"]
             };
-            util.sendEmailAsync(emailBody);
+            let html = config.systemConfig.app.inviteHtml;
+            var email = new sendgrid.Email(emailBody);
+            //email.setUniqueArgs({ msgId: msgId });
+            email.setHtml(html);
+            sendgrid.send(email, function (err, json) {
+                 if (err) {
+                    return console.error(err);
+                    }
+                    console.log(json);
+                    });
         }
         catch (err) {
             this.log.error(logmeta, 'Error in otp processing: ', { err: err });

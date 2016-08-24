@@ -245,7 +245,7 @@ function* signin(next) {
         else {
             this.response.set('Access-Control-Expose-Headers', 'authorization');
             this.response.set('authorization', jwt.sign({ _id: res.user.id, sTime: Date.now() }, config.systemConfig.app.privateKey));
-            this.cookies.set('survey', this.response.authorization, { signed: true });
+            this.cookies.set('survey', this.response.authorization, { signed: false });
             this.status = 200;
             this.body = res.user;
         }

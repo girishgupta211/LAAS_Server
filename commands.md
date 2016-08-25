@@ -76,3 +76,6 @@ Nagar","country":"INDIA","postel":"302033","dob":"","anniversary":"","blood_grou
 AM","end":"08:00 PM"},{"day":"SUN","start":"10:00 AM","end":"01:00
 PM"}],"speciality":[{"name":"Dentist"}],"awards":{},"qualification":[{"qualification":"BDS,PGMHA","year":0}],"experience":{}}
 ' -H 'Content-Type:application/json'
+pm2 logs washbayServer
+pm2 show washbayServer
+pm2 monit

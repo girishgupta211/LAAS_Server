@@ -1,3 +1,4 @@
+pm2 start washbayServer.js
 mongoimport -d washbay-dev -c hospitals --type csv --file ~/dataHack/hospital_database-may_2016.csv --headerline
 
 node washbayServer.js | node_modules/bunyan/bin/bunyan

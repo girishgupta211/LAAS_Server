@@ -78,7 +78,7 @@ function* getListRestroom(next) {
 function* addRestroom(next) {
     try {
 //        wbuser = this.document.wbuser;
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         log.info('Body recieved in add restroom : ', body);
         let restroomStruct = yield new Restroom(body).save();
         log.info("Add Restroom : ", restroomStruct);
@@ -94,7 +94,7 @@ function* addRestroom(next) {
 }
 function* updateRestroom(next) {
     try {
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         let id = this.params.id;
         //let restroomStruct = yield Restroom.findOneAndUpdate({ _id: body._id }, body, { new: true });
         let restroomStruct = yield Restroom.findByIdAndUpdate(id,body, { new: true });

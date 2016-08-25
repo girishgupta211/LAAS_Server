@@ -131,7 +131,7 @@ function* getListDoctor(next) {
 function* addDoctor(next) {
     try {
 //        wbuser = this.document.wbuser;
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         log.info('Body recieved in add doctor : ', body);
         let doctorStruct = yield new Doctor(body).save();
         log.info("Add Doctor : ", doctorStruct);
@@ -147,7 +147,7 @@ function* addDoctor(next) {
 }
 function* updateDoctor(next) {
     try {
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         let id = this.params.id;
         //let doctorStruct = yield Doctor.findOneAndUpdate({ _id: body._id }, body, { new: true });
         let doctorStruct = yield Doctor.findByIdAndUpdate(id,body, { new: true });

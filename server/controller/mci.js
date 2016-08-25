@@ -118,7 +118,7 @@ function* getListMci(next) {
 function* addMci(next) {
     try {
 //        wbuser = this.document.wbuser;
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         log.info('Body recieved in add mci : ', body);
         let mciStruct = yield new Mci(body).save();
         log.info("Add Mci : ", mciStruct);
@@ -134,7 +134,7 @@ function* addMci(next) {
 }
 function* updateMci(next) {
     try {
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         let id = this.params.id;
         //let mciStruct = yield Mci.findOneAndUpdate({ _id: body._id }, body, { new: true });
         let mciStruct = yield Mci.findByIdAndUpdate(id,body, { new: true });

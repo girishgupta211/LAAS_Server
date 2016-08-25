@@ -64,3 +64,14 @@ curl -i 'http://localhost:9135/w1/clinicquery?lquery=pr&limit=2&pageNumber=0&cit
 curl -i 'http://localhost:9135/w1/clinic/57ba6b423458d1f0fda7db92'
 curl -i 'http://localhost:9135/w1/clinic'
 
+// CallTheDoc
+curl -i 'http://localhost:9135/w1/callthedoctor'
+curl -i 'http://localhost:9135/w1/callthedoctor' -X POST -d '{"details":{"id":406,"status":0,"fname":"Dr Lavish
+","lname":"Gupta","email":"drlavish@sapphiredentalhospital.com","email2":"","phone":"","mobile":"+919950765090,
+9314868244","city":16,"lat":"26.800557","lng":"75.82298400000002","experience":"10
+years","consultant_fee":100,"logo":"144594671413.jpg","tags":null,"locality":"Pratap Nagar","address":"Sapphire Dental
+Hospital & Orthodontic Center,Kumbha Marg Near Community Center, Sector11 Pratap
+Nagar","country":"INDIA","postel":"302033","dob":"","anniversary":"","blood_group":"","sex":"m","distance":"0","qualification":"BDS,PGMHA","cityname":"Jaipur","image":"/uploads/node/cache.php?src=/doctors/144594671413.jpg&w=120&h=150&id=406","sno":null},"timing":[{"day":"MON-SAT","start":"09:30
+AM","end":"08:00 PM"},{"day":"SUN","start":"10:00 AM","end":"01:00
+PM"}],"speciality":[{"name":"Dentist"}],"awards":{},"qualification":[{"qualification":"BDS,PGMHA","year":0}],"experience":{}}
+' -H 'Content-Type:application/json'

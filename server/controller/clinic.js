@@ -138,7 +138,7 @@ function* getListClinic(next) {
 function* addClinic(next) {
     try {
 //        wbuser = this.document.wbuser;
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         log.info('Body recieved in add clinic : ', body);
         let clinicStruct = yield new Clinic(body).save();
         log.info("Add Clinic : ", clinicStruct);
@@ -154,7 +154,7 @@ function* addClinic(next) {
 }
 function* updateClinic(next) {
     try {
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         let id = this.params.id;
         //let clinicStruct = yield Clinic.findOneAndUpdate({ _id: body._id }, body, { new: true });
         let clinicStruct = yield Clinic.findByIdAndUpdate(id,body, { new: true });

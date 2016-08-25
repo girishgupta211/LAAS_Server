@@ -121,7 +121,7 @@ function* getListBloodbank(next) {
 function* addBloodbank(next) {
     try {
 //        wbuser = this.document.wbuser;
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         log.info('Body recieved in add bloodbank : ', body);
         let bloodbankStruct = yield new Bloodbank(body).save();
         log.info("Add Bloodbank : ", bloodbankStruct);
@@ -137,7 +137,7 @@ function* addBloodbank(next) {
 }
 function* updateBloodbank(next) {
     try {
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         let id = this.params.id;
         //let bloodbankStruct = yield Bloodbank.findOneAndUpdate({ _id: body._id }, body, { new: true });
         let bloodbankStruct = yield Bloodbank.findByIdAndUpdate(id,body, { new: true });

@@ -128,7 +128,7 @@ function* getListHospital(next) {
 function* addHospital(next) {
     try {
 //        wbuser = this.document.wbuser;
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         log.info('Body recieved in add hospital : ', body);
         let hospitalStruct = yield new Hospital(body).save();
         log.info("Add Hospital : ", hospitalStruct);
@@ -144,7 +144,7 @@ function* addHospital(next) {
 }
 function* updateHospital(next) {
     try {
-        let body = this.request.fields;
+        let body = this.request.body.fields;
         let id = this.params.id;
         //let hospitalStruct = yield Hospital.findOneAndUpdate({ _id: body._id }, body, { new: true });
         let hospitalStruct = yield Hospital.findByIdAndUpdate(id,body, { new: true });

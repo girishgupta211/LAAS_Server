@@ -13,7 +13,7 @@ exports.initSecured = (app) => {
 };
 exports.initPub = (app) => {
     app.get('/w1/clinic', getListClinic);
-    app.get('/w1/cities', getListCities);
+    app.get('/w1/city', getListCities);
     app.get('/w1/clinicquery', getQueryList);
     app.get('/w1/clinic/:id', getClinic);
     app.post('/w1/clinic', addClinic);
@@ -42,7 +42,7 @@ function* getQueryList(next) {
         if(this. query.area)
             area = this.query.area.toString();
 
-        let clinic = "Delhi"
+        let clinic =  ""//"Delhi"
         if(this. query.clinic)
            clinic = this.query.clinic.toString();
 
@@ -54,14 +54,15 @@ function* getQueryList(next) {
         if(this.query.name)
             name = this.query.name.toString
 
-      let q2 =  {"Practice.Area":"Balkampet" , "Practice.City":"Hyderabad" }
+        log.info("Query pattern: ", query, "Limit: " ,limit ,"City: ",city, "Area: ", area, "clinic Pattern: " , clinic,   "pageNumber", pageNumber);
+ //     let q2 =  {"Practice.Area":"Balkampet" , "Practice.City":"Hyderabad" }
 
       let  q = [
        {'$unwind':'$Practice'} ,
        { '$match' : {
          '$and' : [ 
             {"Practice.City":  {   '$regex':city, '$options' : 'i' } },
-            {"Practice.Area":  {   '$regex': area, '$options' : 'i' } },
+       //     {"Practice.Area":  {   '$regex': area, '$options' : 'i' } },
             { '$or' :  [
                 {'FirstName' : {   '$regex':name, '$options' : 'i' } } , 
                 {'Practice.Hospital' : {   '$regex': clinic , '$options' : 'i' } } 
@@ -106,7 +107,7 @@ function* getListCities(next) {
      try {
         log.info("Get List Cities ");
         let cityList;
-        cityList = yield Clinic.distinct("relations.practice.locality.city.name").sort().exec();
+        cityList = yield Clinic.distinct("Practice.City").sort().exec();
         this.body = cityList;
         this.status = 200;
         yield next;

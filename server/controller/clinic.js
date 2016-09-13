@@ -33,17 +33,23 @@ function* getQueryList(next) {
 		let pageNumber = 0;
 		if (this.query.pageNumber)
 			pageNumber = this.query.pageNumber;
-      
-        let city = "Hyderabad"
-        if(this. query.city)
+
+        let cityQuery = {};
+        let city = "" //"Hyderabad"
+        if(this.query.city)
             city = this.query.city.toString();
+            cityQuery = {"Practice.City":  {   '$regex':city, '$options' : 'i' } };
         
-        let area = "Balkampet"
-        if(this. query.area)
+        let areaQuery = {};
+        let area = "" //"Balkampet"
+        if(this.query.area)
             area = this.query.area.toString();
+            areaQuery = {"Practice.Area":  {   '$regex':area, '$options' : 'i' } };
+
+        
 
         let clinic =  ""//"Delhi"
-        if(this. query.clinic)
+        if(this.query.clinic)
            clinic = this.query.clinic.toString();
 
         let query = ""; 
@@ -55,14 +61,13 @@ function* getQueryList(next) {
             name = this.query.name.toString
 
         log.info("Query pattern: ", query, "Limit: " ,limit ,"City: ",city, "Area: ", area, "clinic Pattern: " , clinic,   "pageNumber", pageNumber);
- //     let q2 =  {"Practice.Area":"Balkampet" , "Practice.City":"Hyderabad" }
-
+        
       let  q = [
        {'$unwind':'$Practice'} ,
        { '$match' : {
-         '$and' : [ 
-            {"Practice.City":  {   '$regex':city, '$options' : 'i' } },
-       //     {"Practice.Area":  {   '$regex': area, '$options' : 'i' } },
+         '$and' : [
+              cityQuery ,
+              areaQuery ,
             { '$or' :  [
                 {'FirstName' : {   '$regex':name, '$options' : 'i' } } , 
                 {'Practice.Hospital' : {   '$regex': clinic , '$options' : 'i' } } 

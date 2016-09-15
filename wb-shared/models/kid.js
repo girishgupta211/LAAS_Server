@@ -94,7 +94,7 @@ var KidSchema = new Schema(
 });
 KidSchema.static('defKidSchema', function () {
     return {
-        Kid_Name: null
+        Name: null
         }
 });
 mongoose.model('Kid', KidSchema);

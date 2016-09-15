@@ -13,7 +13,6 @@ exports.initSecured = (app) => {
 };
 exports.initPub = (app) => {
     app.get('/w1/kid', getListKid);
-    app.get('/w1/council', getListCouncil);
     app.get('/w1/kidquery', getQueryList);
     app.get('/w1/kid/:id', getKid);
     app.post('/w1/kid', addKid);
@@ -80,24 +79,6 @@ function* getKid(next) {
         this.body = "Error in processing Kid Get request";
         this.status = 404;
     }
-}
-
-function* getListCouncil(next) {
-     try {
-        log.info("Get List Council ");
-        let councilList;
-        councilList = yield Kid.distinct("Lbl_Council").sort().exec();
-        this.body = councilList;
-        this.status = 200;
-        yield next;
-    }
-    catch (error) {
-        log.error('Exception caught in populating councilList  : ', error);
-        this.body = "Error in processing Council List request";
-        this.status = 404;
-    }
-
-
 }
 
 function* getListKid(next) {

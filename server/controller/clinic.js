@@ -47,6 +47,12 @@ function* getQueryList(next) {
             areaQuery = {"Practice.Area":  {   '$regex':area, '$options' : 'i' } };
 
         
+        let specQuery = {};
+        let spec = "" //"Balkampet"
+        if(this.query.specializaion)
+            spec = this.query.specializaion.toString();
+            specQuery = {"Specialization":  {   '$regex':spec, '$options' : 'i' } };
+
 
         let clinic =  ""//"Delhi"
         if(this.query.clinic)
@@ -54,13 +60,14 @@ function* getQueryList(next) {
 
         let query = ""; 
         if(this.query.lquery)
-            query = this.query.lquery.toString
+            query = this.query.lquery.toString();
 
         let name = ""; 
         if(this.query.name)
-            name = this.query.name.toString
+            name = this.query.name.toString();
 
-        log.info("Query pattern: ", query, "Limit: " ,limit ,"City: ",city, "Area: ", area, "clinic Pattern: " , clinic,   "pageNumber", pageNumber);
+        log.info("Query pattern: ", query, "Specialization: " ,spec ,"City: ",city, "Area: ", area, "clinic Pattern: " , clinic,
+        "pageNumber", pageNumber, "Limit: " );
         
       let  q = [
        {'$unwind':'$Practice'} ,
@@ -68,9 +75,11 @@ function* getQueryList(next) {
          '$and' : [
               cityQuery ,
               areaQuery ,
+              specQuery ,
             { '$or' :  [
-                {'FirstName' : {   '$regex':name, '$options' : 'i' } } , 
-                {'Practice.Hospital' : {   '$regex': clinic , '$options' : 'i' } } 
+                {'FirstName' : {   '$regex':query, '$options' : 'i' } } , 
+                {'LastName' : {   '$regex':query, '$options' : 'i' } } , 
+                {'Practice.Hospital' : {   '$regex': query , '$options' : 'i' } } 
              ]}
         ]}} //,
         

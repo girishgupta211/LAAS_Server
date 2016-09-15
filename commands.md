@@ -41,8 +41,9 @@ curl -i 'http://localhost:9135/w1/mciquery?limit=10&pageNumber=2' -X GET
 curl -i 'http://localhost:9135/w1/mci' -X GET
 curl -i 'http://localhost:9135/w1/mci/57b3f1427edd76d3dd777b5a'
 curl -i 'http://localhost:9135/w1/council/'
-curl -i 'http://localhost:9135/w1/mciquery?council=Maharashtra&lquery=mukesh&limit=10&pageNumber=0'
-curl -i 'localhost:9135/w1/mciquery?council=Maharashtra&lquery=40183&limit=10&pageNumber=0'
+curl -i 'http://localhost:9135/w1/mciquery?Council=Maharashtra&lquery=mukesh&limit=10&pageNumber=0'
+curl -i 'http://localhost:9135/w1/mciquery?Council=''&lquery=pritum&limit=10&pageNumber=0'
+curl -i 'localhost:9135/w1/mciquery?Council=Maharashtra&lquery=40183&limit=10&pageNumber=0'
 
 //Get Blood Bank Data
 curl -i 'http://localhost:9135/w1/bloodbank' -X GET
@@ -61,7 +62,7 @@ curl -i http://localhost:9135/v1/signin -d '{"password":"q", "userId" : "msaa@gm
 curl -i 'http://localhost:9135/v1/user' -d '{"name" : {"first" : "Girish"},"password":"q", "gender": "M", "email" : "girishgargdce@gmail.com", "phone":"9013001288" }' -X POST -H 'Content-Type:application/json'
 
 //Clinic APIs
-curl -i 'http://localhost:9135/w1/clinicquery?lquery=pr&limit=2&pageNumber=0&city=Hyderabad&area=Balkampet'
+curl -i  'http://localhost:9135/w1/clinicquery?lquery=pr&limit=2&pageNumber=0&city=Hyderabad&area=Balkampet&specializaion=Gastroenterologis'
 curl -i 'http://localhost:9135/w1/clinic/57ba6b423458d1f0fda7db92'
 curl -i 'http://localhost:9135/w1/clinic'
 
@@ -71,3 +72,5 @@ curl -i 'http://localhost:9135/w1/callthedoctor' -X POST -d '{"details":{"id":40
 pm2 logs washbayServer
 pm2 show washbayServer
 pm2 monit
+
+mongoimport -d washbay-dev -c kids --drop < data.json

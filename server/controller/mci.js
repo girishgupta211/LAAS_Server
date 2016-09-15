@@ -30,7 +30,7 @@ function* getQueryList(next) {
 			limit = Number.parseInt(limit);
 		}
   
-        let council = "Delhi"
+        let council = "" // "Delhi"
         if(this. query.Council)
             council = this.query.Council.toString();
        

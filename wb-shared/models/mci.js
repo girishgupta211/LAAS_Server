@@ -16,13 +16,13 @@ var MciSchema = new Schema({
     "type": "string"
     },
     "lbl_Info": {
-    "type": "date"
+    "type": "string"
     },
     "FatherName": {
     "type": "string"
     },
     "QualYear": {
-    "type": "date"
+    "type": "string"
     },
     "Address": {
     "type": "string"

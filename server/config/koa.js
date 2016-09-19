@@ -70,6 +70,10 @@ module.exports = function (app) {
         let wbuser = yield User.findById(this.state.wbuser._id).exec();
         this.document = {};
         this.document.wbuser = wbuser;
+        // If this is not secured  call then return from here so that it does not go to secured router
+        if(!this.document.wbuser){
+            return;    
+        }
         yield next;
     });
     app.use(function* (next) {

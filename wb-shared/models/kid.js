@@ -4,12 +4,6 @@ let Schema = mongoose.Schema, log = require('../utils/logger').root.child({ 'mod
 
 var KidSchema = new Schema(
 {
-    "_id": {
-        "$oid": {
-        "type": "string"
-        },
-        "type": "object"
-    },
     "Name": {
         "type": "string"
     },
@@ -81,9 +75,13 @@ var KidSchema = new Schema(
     {
         "type":
             "string"
+    },
+    "PhotosPath":
+    {
+        "type":
+            "string"
     }
 }
-
 , {
     toJSON: {
         transform: function (docM, retJ, option) {

@@ -75,4 +75,7 @@ pm2 logs washbayServer
 pm2 show washbayServer
 pm2 monit
 
+## Kids APIs ##
+curl -i  'http://localhost:9135/w1/kid' -X GET
+curl -i 'http://localhost:9135/w1/kid' -d '{"_id":"57d9633acd91ebb2c8c2a5c0","Name":"Anetru Gupta","DOB":"28/02/2015","BithTime":"8 pm","Gastation":"40 weeks","ModeOfDelivery":"Cesarian Section","MotherHeight":"5.2 ft","FatherHeight":"5.6 ft","MPH":"","Gender":"M","BirthWeight":"2kg","BirthLength":"50 cms","HeadCircumference":"32 cms","FatherMob":"9899336565","MotherMob":"9999123456","FatherEmail":"iamabhinav.akg@gmail.com","MotherEmail":"","RegistrationNo":"SWA001"}'  -H 'Content-Type:application/json'
 mongoimport -d washbay-dev -c kids --drop < data.json

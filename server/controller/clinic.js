@@ -14,6 +14,7 @@ exports.initSecured = (app) => {
 exports.initPub = (app) => {
     app.get('/w1/clinic', getListClinic);
     app.get('/w1/city', getListCities);
+    app.get('/w1/specialization', getListSpecialization);
     app.get('/w1/clinicquery', getQueryList);
     app.get('/w1/clinic/:id', getClinic);
     app.post('/w1/clinic', addClinic);
@@ -134,6 +135,23 @@ function* getListCities(next) {
 
 
 }
+
+function* getListSpecialization(next) {
+    try {
+        log.info("Get List Cities ");
+        let specializationList;
+        specializationList = yield Clinic.distinct("Specialization").sort().exec();
+        this.body = specializationList;
+        this.status = 200;
+        yield next;
+    }   
+    catch (error) {
+        log.error('Exception caught in populating specializationList  : ', error);
+        this.body = "Error in  processing City List request";
+        this.status = 404;
+    }   
+}
+
 
 function* getListClinic(next) {
     try {

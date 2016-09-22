@@ -44,7 +44,7 @@ function* getQueryList(next) {
 
         var q  = { 
             $and :[  
-            { Name :{ '$ne':'' } }, 
+       //     { Name :{ '$ne':'' } }, 
             { Lbl_Council :  { '$regex': council , '$options': 'i' } },
             { $or: [ 
             { Name :{ '$regex':query, '$options':'i' } }, 

@@ -13,7 +13,7 @@ exports.initSecured = (app) => {
 };
 exports.initPub = (app) => {
     app.get('/w1/bloodbank', getListBloodbank);
-    app.get('/w1/city', getListCity);
+    app.get('/w1/cityBloodBank', getListCity);
     app.get('/w1/bloodbankquery', getQueryList);
     app.get('/w1/bloodbank/:id', getBloodbank);
     app.post('/w1/bloodbank', addBloodbank);

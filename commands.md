@@ -48,7 +48,7 @@ curl -i 'localhost:9135/w1/mciquery?Council=Maharashtra&lquery=40183&limit=10&pa
 //Get Blood Bank Data
 curl -i 'http://localhost:9135/w1/bloodbank' -X GET
 curl -i 'http://localhost:9135/w1/bloodbank/57b477167edd76d3dd815af0' -X GET
-curl -i 'http://localhost:9135/w1/city' -X GET
+curl -i 'http://localhost:9135/w1/cityBloodBank' -X GET
 curl -i 'http://localhost:9135/w1/bloodbankquery?lquery=Guru&limit=10&pageNumber=0&city=delhi'
 
 
@@ -65,6 +65,8 @@ curl -i 'http://localhost:9135/v1/user' -d '{"name" : {"first" : "Girish"},"pass
 curl -i  'http://localhost:9135/w1/clinicquery?lquery=pr&limit=2&pageNumber=0&city=Hyderabad&area=Balkampet&specializaion=Gastroenterologis'
 curl -i 'http://localhost:9135/w1/clinic/57ba6b423458d1f0fda7db92'
 curl -i 'http://localhost:9135/w1/clinic'
+curl -i 'http://localhost:9135/w1/specialization' -X GET
+
 
 // CallTheDoc
 curl -i 'http://localhost:9135/w1/callthedoctor'

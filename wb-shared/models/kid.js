@@ -4,83 +4,43 @@ let Schema = mongoose.Schema, log = require('../utils/logger').root.child({ 'mod
 
 var KidSchema = new Schema(
 {
-    "Name": {
-        "type": "string"
-    },
-    "DOB": {
-        "type": "string"
-    },
-    "BithTime": {
-        "type": "string"
-    },
-    "Gastation": {
-        "type": "string"
-    },
-    "ModeOfDelivery": {
-        "type": "string"
-    },
-    "MotherHeight": {
-        "type": "string"
-    },
-    "FatherHeight":
+    registrationNo:
     {
         "type": "string"
     },
-    "MPH":
-    {
-        "type":
-            "string"
+    name : {
+        "type": "string"
     },
-    "Gender":
-    {
-        "type":
-            "string"
+    dob: {
+        "type": Date
     },
-    "BirthWeight":
-    {
-        "type":
-            "string"
+    bithTime: { "type": "string" },
+    gastation: { "type": "string" },
+    modeOfDelivery: { "type": "string" },
+    motherHeight: { "type": "string"   },
+    motherMob :   { "type": "string"   },
+    motherEmail:  {  "type": "string"  }, 
+    fatherHeight: {  "type": "string"  },
+    fatherMob :   {    "type": "string"    },
+    fatherEmail:  {    "type": "string"   },
+    mph: { "type":  "string"  },
+    gender:   { "type": "string"  },
+    birthWeight: 
+    {    "type": "string"
     },
-    "BirthLength":
+    birthLength:
     {
-        "type":
-            "string"
+        "type": "string"
     },
-    "HeadCircumference":
+    headCircumference:
     {
-        "type":
-            "string"
+        "type": "string"
     },
-    "FatherMob":
+    image:
     {
-        "type":
-            "string"
-    },
-    "MotherMob":
-    {
-        "type":
-            "string"
-    },
-    "FatherEmail":
-    {
-        "type":
-            "string"
-    },
-    "MotherEmail":
-    {
-        "type":
-            "string"
-    },
-    "RegistrationNo":
-    {
-        "type":
-            "string"
-    },
-    "PhotosPath":
-    {
-        "type":
-            "string"
-    }
+          type: Schema.Types.Mixed,
+          default: {}
+    } 
 }
 , {
     toJSON: {
@@ -92,7 +52,7 @@ var KidSchema = new Schema(
 });
 KidSchema.static('defKidSchema', function () {
     return {
-        Name: null
+        name: null
         }
 });
 mongoose.model('Kid', KidSchema);

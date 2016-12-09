@@ -31,7 +31,7 @@ function* getQueryList(next) {
 		}
   
         //let district = "Alwar"
-        let district = "Alwar"
+        let district = ""
         if(this.query.district)
             district = this.query.district.toString();
        

@@ -47,7 +47,7 @@
     "koa-compress": "latest",
     "koa-cors": "0.0.16",
     "koa-generic-session": "latest",
-    "koa-jwt": "latest",
+    "koa-jwt": "1.2.0",
     "koa-logger": "~1",
     "koa-passport": "latest",
     "koa-response-time": "latest",

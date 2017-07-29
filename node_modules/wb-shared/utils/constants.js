@@ -78,3 +78,80 @@ exports.ORECEVU = ORECEVU;
 exports.OPAYD = OPAYD;
 exports.OPARTOD = OPARTOD;
 exports.OSTATUS = [OBUCKET, OPLACED, OWITHPD, OWITHS, OPROCESSS, OTOENDS, OPACKS, ODELVPD, ORECEVU, OPAYD, OPARTOD];
+exports.RSTATUS = {
+  'incomplete': 0,
+  'complete': 1,
+  'disqualified': 2
+};
+
+const DELSTATUS = {
+  'default': 0,
+  'soft': 1
+};
+exports.DELSTATUS = DELSTATUS;
+
+const MANUAL = {
+   'NO': 0,
+   'YES': 1
+}
+exports.MANUAL = MANUAL;
+
+const CATEGORY = [
+  "Community",
+  "Brand Recognition",
+  "Customer feedback- Customer Service Satisfaction",
+  "Customer feedback- product satisfaction survey",
+  "Customer feedback- Motivation and buying experience",
+  "Customer feedback- client evaluation of project",
+  "Demographics",
+  "Education- Student Evaluation",
+  "Education- Teacher Evaluation",
+  "Events- Post event feedback",
+  "Events- Feedback for event organiser",
+  "Events- Feedback for speaker/ presenter",
+  "Events- Exhibitor/ sponsor feedback",
+  "Healthcare- Patient Satisfaction Survey",
+  "Healthcare- Employee Concern For Patients",
+  "Market Research- Product Survey and Evaluation",
+  "Market Research- New Product Launch",
+  "Human Resources- Employee satisfaction",
+  "Human Resources- Job satisfaction",
+  "Human Resources- HR, Company And Supervisor Evaluation",
+  "Human Resources- Employee evaluation by manager",
+  "Human Resources- Self assessment of employee"
+];
+exports.CATEGORY = CATEGORY;
+
+const ORGANIZATION = [
+  "Company",
+  "School",
+  "College",
+  "Hospital",
+  "Physician",
+  "Dentist",
+  "Non-profit",
+  "Government",
+  "Individual"
+];
+exports.ORGANIZATION = ORGANIZATION;
+const SIZE = [
+  "1-4",
+  "5-9",
+  "10-19",
+  "20-99",
+  "100-499",
+  "500-999",
+  "1000-4999",
+  "5000-9999",
+  "10000+"
+];
+exports.SIZE = SIZE;
+
+const COLLTYPE = {
+  webLink : 0,
+  emailLink : 1,
+  fbLink : 2,
+  mdLink : 3,
+  previewLink : 4
+}
+exports.COLLTYPE = COLLTYPE;

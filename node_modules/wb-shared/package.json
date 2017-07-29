@@ -1,0 +1,36 @@
+{
+  "name": "wb-shared",
+  "version": "0.0.1",
+  "private": "true",
+  "description": "server for LAAS Application named washbay.in",
+  "homepage": "http://www.washbay.in",
+  "bugs": {
+    "url": "https://github.com/V-RaiD/LAAS_Server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/V-RaiD/LAAS_Server"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "author": {
+    "name": "Amitesh Rai",
+    "url": "https://github.com/V-RaiD"
+  },
+  "scripts": {
+
+  },
+
+  "main":"index.js",
+  "dependencies": {
+    "bcrypt-nodejs": "latest",
+    "bunyan": "~1",
+    "co": "~4",
+    "lodash": "~3",
+    "mongodb": "latest",
+    "mongoose": "latest",
+    "mongoose-createdmodified": "latest",
+    "turf-inside": "latest"
+  }
+}
